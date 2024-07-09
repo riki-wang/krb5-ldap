@@ -8,8 +8,7 @@ ENV LDAP_ADMIN_PWD=admin123
 ENV LDAP_BASE_DN="dc=example,dc=com"
 ENV KRB5_REALM=hello.example.com
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apk/repositories \
-    && apk add --update && apk add krb5-server supervisor expect \
+RUN apk add --update && apk add krb5-server krb5 supervisor expect \
     && rm -rf /var/cache/apk/* 
 
 ADD entrypoint.sh /entrypoint.sh
